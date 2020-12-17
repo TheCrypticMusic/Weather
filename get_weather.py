@@ -20,14 +20,8 @@ class WeatherViewer:
 
     def display_weather(self):
         data = json.loads(self.res.text)
-        print(data)
         weather = data['weather'][0]['main']
         temp = data['main']['temp']
-        os.system(f"""
-                osascript -e 'display notification "Temperature: {temp:.0f}°C\nWeather: {weather}" with title "Current Weather in {self.location}"'
-                """
-                  )
+        current_weather = (f"Current Weather in {self.location}\nTemperature: {temp:.0f}°C\nWeather: {weather}")
+        print(current_weather)
 
-
-test = WeatherViewer(location='poole')
-test.display_weather()

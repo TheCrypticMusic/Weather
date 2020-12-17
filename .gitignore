@@ -1,2 +1,5 @@
+.gitignore
 config.py
-city.list.json
+.vscode
+__pycache__
+venv
