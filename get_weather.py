@@ -1,7 +1,6 @@
 import requests
 import json
 import config
-import os
 
 
 class WeatherViewer:
@@ -22,6 +21,14 @@ class WeatherViewer:
         data = json.loads(self.res.text)
         weather = data['weather'][0]['main']
         temp = data['main']['temp']
-        current_weather = (f"Current Weather in {self.location}\nTemperature: {temp:.0f}°C\nWeather: {weather}")
+        current_weather = (f"""Current weather in {self.location}
+                        \nTemperature: {temp:.0f}°C\nWeather: {weather}
+                        """)
         print(current_weather)
 
+
+if __name__ == '__main__':
+    while True:
+        user_location = input("Please enter a location:\n")
+        user_result = WeatherViewer(user_location)
+        user_result.display_weather()
